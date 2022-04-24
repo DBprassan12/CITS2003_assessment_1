@@ -1,0 +1,37 @@
+read -p "Enter file path " filename = 
+
+
+
+if [[ $input =~ ^[+-]?[0-9]+$ ]]; 
+
+then
+    echo "$input is an integer."
+
+
+
+if [[ $input =~ ^[+-]?[0-9]+$ ]]; 
+
+then
+    echo "$input is an integer."
+
+
+
+else echo none
+    
+fi
+
+
+tail $filename
+
+find years 
+
+f3 = years 
+f1 = name 
+f4 = number per thousand 
+
+sort -k 1 -t, -n 
+
+
+tail incedenceOfMalaria.csv -n +2 | sort -k 1 -t, -n | sort -k 4 -t, -n | grep 2003|
+
+tail incedenceOfMalaria.csv -n +2 | sort -k 1 -t, -n | sort -k 4 -t, -n | grep 2006 | tail -n1 | cut -d, -f4
