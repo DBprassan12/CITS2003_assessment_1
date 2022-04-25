@@ -91,3 +91,48 @@ then
 else
     echo "country or year not found in file"
 fi
+
+
+
+sortingVariable=$(tail incedenceOfMalaria.csv -n +2 | sort -k 1 -t, -n | sort -k 4 -t, -n |  grep -w  Yemen | tail -n1)
+
+echo $sortingVariable
+
+country=$( echo $sortingVariable | cut -d, -f1)
+year=$( echo $sortingVariable | cut -d, -f3)
+rate=$( echo $sortingVariable | cut -d, -f4)
+
+
+echo $country
+echo $year
+echo $rate
+
+read -p "Enter a Year or a Country: " input
+removedQoute=$( echo $input | tr -d '"')
+withQoute='"$removedQoute"'
+
+
+echo $removedQoute
+echo $withQoute
+
+
+
+
+
+var1=Boston
+var1=\"${var1}\"
+echo $var1
+
+
+sortingVariable=$(tail incedenceOfMalaria.csv -n +2 | sort -k 1 -t, -n | sort -k 4 -t, -n |  grep -w  Yemen | tail -n1)
+
+echo $sortingVariable
+
+country=$( echo $sortingVariable | cut -d, -f1)
+year=$( echo $sortingVariable | cut -d, -f3)
+rate=$( echo $sortingVariable | cut -d, -f4)
+
+
+echo $country
+echo $year
+echo $rate
