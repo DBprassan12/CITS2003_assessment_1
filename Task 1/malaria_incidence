@@ -1,20 +1,19 @@
 #!/bin/bash
 
-input=$1
 
-sortingVariable=$(tail incedenceOfMalaria.csv -n +2 | sort -k 1 -t, -n | sort -k 4 -t, -n | grep -w $1 | tail -n1)
+sortingVariable=$(tail incedenceOfMalaria.csv -n +2 | sort -k 1 -t, -n | sort -k 4 -t, -n | grep -w "$1" | tail -n1)
 
 country=$( echo $sortingVariable | cut -d, -f1)
 year=$( echo $sortingVariable | cut -d, -f3)
 rate=$( echo $sortingVariable | cut -d, -f4)
 
 
-if [[ $input =~ ^[+-]?[0-9]+$ ]] &&  (($input >= 2000 && $input <= 2018))
+if [[ $1 =~ ^[+-]?[0-9]+$ ]] &&  (($1 >= 2000 && $1 <= 2018))
 
 then
     echo For the year $year, the country with the highest incidence was $country, with a rate of $rate per 1,000
     
-elif [ "$country" == "$input" ]
+elif [ "$country" == "$1" ]
 
 then
     echo For the country $country, the year with the highest incidence was $year, with a rate of $rate per 1,000
