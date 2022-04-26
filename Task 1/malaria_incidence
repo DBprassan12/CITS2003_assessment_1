@@ -1,6 +1,5 @@
 #!/bin/bash
 
-
 sortingVariable=$(tail incedenceOfMalaria.csv -n +2 | sort -k 1 -t, -n | sort -k 4 -t, -n | grep -w "$1" | tail -n1)
 
 country=$( echo $sortingVariable | cut -d, -f1)
@@ -8,7 +7,11 @@ year=$( echo $sortingVariable | cut -d, -f3)
 rate=$( echo $sortingVariable | cut -d, -f4)
 
 
-if [[ $1 =~ ^[+-]?[0-9]+$ ]] &&  (($1 >= 2000 && $1 <= 2018))
+minYear=$(tail incedenceOfMalaria.csv -n +2 | cut -d, -f3 | sort | uniq | head -n1 )
+MaxYear=$(tail incedenceOfMalaria.csv -n +2 | cut -d, -f3 | sort | uniq | tail -n1)
+
+
+if [[ $1 =~ ^[+-]?[0-9]+$ ]] &&  (($1 >= "$minYear" && $1 <= "$MaxYear"))
 
 then
     echo For the year $year, the country with the highest incidence was $country, with a rate of $rate per 1,000
