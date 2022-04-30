@@ -1,10 +1,5 @@
 #!/bin/bash
 
-input1=$1
-input2=$2
-file=$3
-
--w 
 
 
 
@@ -12,4 +7,15 @@ file=$3
 
 
 
--nth
+
+
+
+
+tr -c '[:alnum:]' '[\n*]' < ./files/ADollsHouse.txt | sort | uniq -c | sort -nr | head -
+
+
+
+rate=$( echo grep -nr 'the' ./files | cut -d/ -f2  | sort | uniq)
+
+
+tr -c '[:alnum:]' '[\n*]' < ./files | xargs -0 grep 'the' |cut -d/ -f2  | sort | uni
