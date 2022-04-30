@@ -18,3 +18,62 @@ read -p "Enter file path " input1
 read -p "Enter file path " input2
 read -p "Enter file path " input3
 echo $input1 $input2 $input3
+
+
+
+% ./common_words text_files
+The 1th most common word is "the" across 9 files
+
+% ./common_words -nth 2 text_files
+The 2th most common word is "and" across 5 files
+
+% ./common_words -w Alice text_files
+The most significant rank for the word Alice is 12 in file AliceInWonderland.txt
+
+% ./common_words -w I text_files
+The most significant rank for the word I is 1 in file ADollsHouse.txt 
+
+
+
+FoundWord
+NumberofFiles
+
+
+
+
+
+
+
+echo The $Number most common word is "$FoundWord" across "$NumberofFiles" files
+
+
+elif 
+
+
+then
+
+
+
+elif 
+
+
+then 
+
+
+
+fi
+
+read -p "Enter file path " Number
+read -p "Enter file path " Word
+
+
+
+
+
+
+
+
+
+
+
+
