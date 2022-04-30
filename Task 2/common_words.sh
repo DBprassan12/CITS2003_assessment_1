@@ -3,6 +3,13 @@
 
 
 
+read -p "Enter fileName " fileName
+read -p "Enter file path " input2
+read -p "Enter file path " input3
+
+cat "$fileName"/*.txt > temp.txt
+
+tr -c '[:alnum:]' '[\n*]' < ./temp.txt | sort | uniq -c | sort -nr | head -10
 
 
 
@@ -11,11 +18,6 @@
 
 
 
-tr -c '[:alnum:]' '[\n*]' < ./files/ADollsHouse.txt | sort | uniq -c | sort -nr | head -
 
+rm temp.txt
 
-
-rate=$( echo grep -nr 'the' ./files | cut -d/ -f2  | sort | uniq)
-
-
-tr -c '[:alnum:]' '[\n*]' < ./files | xargs -0 grep 'the' |cut -d/ -f2  | sort | uni
