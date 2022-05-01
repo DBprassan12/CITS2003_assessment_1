@@ -1,14 +1,25 @@
 #!/bin/bash
 
+
+# find min a max year 
+
 sortingVariable=$(tail incedenceOfMalaria.csv -n +2 | sort -k 1 -t, -n | sort -k 4 -t, -n | grep -w "$1" | tail -n1)
+
+
+# find country , year and rates
 
 country=$( echo $sortingVariable | cut -d, -f1)
 year=$( echo $sortingVariable | cut -d, -f3)
 rate=$( echo $sortingVariable | cut -d, -f4)
 
+# find min a max year 
 
 minYear=$(tail incedenceOfMalaria.csv -n +2 | cut -d, -f3 | sort | uniq | head -n1 )
 MaxYear=$(tail incedenceOfMalaria.csv -n +2 | cut -d, -f3 | sort | uniq | tail -n1)
+
+
+
+# if statments to satsisfy output condtions
 
 
 if [[ $1 =~ ^[+-]?[0-9]+$ ]] &&  (($1 >= "$minYear" && $1 <= "$MaxYear"))
@@ -24,3 +35,5 @@ then
 else
     echo "country or year not found in file"
 fi
+
+
