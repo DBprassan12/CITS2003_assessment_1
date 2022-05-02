@@ -1,7 +1,6 @@
 #!/bin/bash
 
 # Divij Bhaw
-# 23183845@student.uwa.edu.au
 # Assignment 1 2022 class CITS2003
 # TASK TWO
 
