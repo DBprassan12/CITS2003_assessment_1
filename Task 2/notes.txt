@@ -39,6 +39,11 @@ FoundWord
 NumberofFiles
 
 
+echo $sortingVariable
+
+
+b=${sortingVariable%:*}
+echo "$b"
 
 
 
@@ -68,6 +73,45 @@ read -p "Enter file path " Word
 
 
 
+ grep -o -i mauris example.txt | wc -l
+
+
+
+for FILE in ./files/* ; 
+
+
+do 
+
+sortingVariable=$(grep -o -r "$OrignalWord" ./files/* | uniq -c | sort -rn | sort -rn | rev | cut -d ' ' -f1 | rev)
+
+echo $sortingVariable; 
+
+done
+
+
+for FILE in $foundInfiles ; 
+
+do 
+
+echo $FILE
+
+# tr -c '[:alnum:]' '[\n*]' < $FILE | sort | uniq -c | sort -nr | head -n2 | tail -1 | rev | cut -d ' ' -f1 | rev 
+
+
+done
+
+
+
+
+#sortingVariable=$(grep -o -r "$OrignalWord" ./$fileName | uniq -c | sort -rn | sort -rn | rev | cut -d ' ' -f1 | rev)
+
+# grep -o -w -r "I" ./files | uniq -c | sort -rn | head -n 10
+
+
+
+#b=${sortingVariable%:*}
+
+#tr -c '[:alnum:]' '[\n*]' <  $b | sort | uniq -c | sort -nr | grep -n "$OrignalWord" | head -n1
 
 
 
@@ -77,3 +121,34 @@ read -p "Enter file path " Word
 
 
 
+
+
+if [[ "$Orignalnumber" =~ ^[+-]?[0-9]+$ ]] &&  (("$Orignalnumber" >= "1" && "$Orignalnumber"  <= "$uniqWordsCount"))
+
+then echo "The "$Orignalnumber"th most common word is {"$FindWord"} across "$foundInfiles" files"
+
+
+
+else echo bruh
+
+fi
+
+
+if [[ -d "$1" ]]
+
+then echo test1
+
+
+if [ "$1" == "-nth" ] 
+
+
+then echo test2
+
+
+else [ "$1" == "-w" ] 
+
+then  echo test3
+
+
+
+fi

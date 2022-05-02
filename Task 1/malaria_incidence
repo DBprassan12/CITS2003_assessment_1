@@ -1,33 +1,34 @@
 #!/bin/bash
 
+# Divij Bhaw
+# 23183845@student.uwa.edu.au
+# Assignment 1 2022 class CITS2003
 
-# find min a max year 
 
+# Sort the CSV file 
 sortingVariable=$(tail incedenceOfMalaria.csv -n +2 | sort -k 1 -t, -n | sort -k 4 -t, -n | grep -w "$1" | tail -n1)
 
 
-# find country , year and rates
+# find country , year and rates of the input
 
 country=$( echo $sortingVariable | cut -d, -f1)
 year=$( echo $sortingVariable | cut -d, -f3)
 rate=$( echo $sortingVariable | cut -d, -f4)
 
-# find min a max year 
+# find min a max year of the file
 
 minYear=$(tail incedenceOfMalaria.csv -n +2 | cut -d, -f3 | sort | uniq | head -n1 )
 MaxYear=$(tail incedenceOfMalaria.csv -n +2 | cut -d, -f3 | sort | uniq | tail -n1)
 
 
-
-# if statments to satsisfy output condtions
-
+#if statements to satisfy output conditions and outputs errors 
 
 if [[ $1 =~ ^[+-]?[0-9]+$ ]] &&  (($1 >= "$minYear" && $1 <= "$MaxYear"))
 
 then
     echo For the year $year, the country with the highest incidence was $country, with a rate of $rate per 1,000
     
-elif [ "$country" == "$1" ]
+elif [ "$country" == "$1" ] 
 
 then
     echo For the country $country, the year with the highest incidence was $year, with a rate of $rate per 1,000
