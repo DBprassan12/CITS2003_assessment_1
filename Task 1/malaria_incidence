@@ -5,36 +5,39 @@
 # Assignment 1 2022 class CITS2003
 
 
-# Sort the CSV file 
+# Sort the CSV file , grep country or year and output Highest Rate row from file called incedenceOfMalaria.csv
 sortingVariable=$(tail incedenceOfMalaria.csv -n +2 | sort -k 1 -t, -n | sort -k 4 -t, -n | grep -w "$1" | tail -n1)
 
 
-# find country , year and rates of the input
-
+# set variables for country , year and rates 
 country=$( echo $sortingVariable | cut -d, -f1)
 year=$( echo $sortingVariable | cut -d, -f3)
 rate=$( echo $sortingVariable | cut -d, -f4)
 
 # find min a max year of the file
-
 minYear=$(tail incedenceOfMalaria.csv -n +2 | cut -d, -f3 | sort | uniq | head -n1 )
 MaxYear=$(tail incedenceOfMalaria.csv -n +2 | cut -d, -f3 | sort | uniq | tail -n1)
 
 
-#if statements to satisfy output conditions and outputs errors 
+#if the statements to satisfy output conditions and outputs errors 
 
+#check input is an interger and is between min and max year
 if [[ $1 =~ ^[+-]?[0-9]+$ ]] &&  (($1 >= "$minYear" && $1 <= "$MaxYear"))
 
 then
     echo For the year $year, the country with the highest incidence was $country, with a rate of $rate per 1,000
-    
+
+
+#check if the input country is the same as the identified country 
 elif [ "$country" == "$1" ] 
 
 then
     echo For the country $country, the year with the highest incidence was $year, with a rate of $rate per 1,000
     
+
+#catch any errors
 else
-    echo "country or year not found in file"
+    echo "country or year not found in file or you have and invalid input "
 fi
 
 

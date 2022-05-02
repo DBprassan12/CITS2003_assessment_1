@@ -12,11 +12,10 @@ then
     
     FindWord=$(tr -c '[:alnum:]' '[\n*]' < ./all.txt | sort | uniq -c | sort -nr | head -n2 | tail -1 | rev | cut -d ' ' -f1 | rev )
     foundInfiles=$(grep -rl "$FindWord" "$1" | wc -l)
-    echo "The 1st most common word is {"$FindWord"} across "$foundInfiles" files"
+    echo "The 1st most common word is {"$FindWord"} across {"$foundInfiles"} files"
     
+
 elif [ "$1" == "-nth" ]
-
-
 
 then
     
@@ -28,25 +27,25 @@ then
     uniqWordsCount=$(tr -c '[:alnum:]' '[\n*]' < ./all.txt | sort | uniq -c | sort -nr | wc -l )
     
     
-    if [[ "$2" =~ ^[+-]?[0-9]+$ ]] &&  (("$2" >= "1" && "$2"  <= "$uniqWordsCount"))
+    if [[ "$2" =~ ^[+-]?[0-9]+$ ]] && (("$2" >= "1" && "$2"  <= "$uniqWordsCount"))
     then
-        echo "The "$2"th most common word is {"$FindWord"} across "$foundInfiles" files"
+        echo "The "$2"th most common word is {"$FindWord"} across {"$foundInfiles"} files"
     else
         echo "invalid input"
     fi
     
     
-elif [ "$1" == "-w" ]
+    
+    
+elif [ "$1" == "-w" ] && grep -r -q "$2" "$3"
 
 then
     
     filesList=$(grep -rl "$2" "$3")
     findRank=$(for FILE in $filesList;
-        do
-            
-            tt=$(tr -c '[:alnum:]' '[\n*]' < $FILE | sort | uniq -c | sort -nr | grep -n -w "$2"  )
-            echo "$tt $FILE" ;
-            
+        do 
+            findRankInEachFile=$(tr -c '[:alnum:]' '[\n*]' < $FILE | sort | uniq -c | sort -nr | grep -n -w "$2"  )
+            echo "$findRankInEachFile $FILE" ;  
     done)
     
     findHighestRank=$( echo "$findRank" | sort -nr | tail -n1 | cut -d: -f1)
@@ -56,7 +55,7 @@ then
     echo "The most significant rank for the word {"$2"} is {"$findHighestRank"} in file {"$findHighestRankedFile"} "
     
     
-else 
+else
     echo "invalid input"
     
 fi
