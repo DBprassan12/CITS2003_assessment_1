@@ -1,5 +1,10 @@
 # CITS2003_assessment_1
 
+# Divij Bhaw
+# 23183845@student.uwa.edu.au
+# Assignment 1 2022 class CITS2003
+
+
 <p class="has-line-data" data-line-start="0" data-line-end="1">Assignment 1 2022</p>
 <p class="has-line-data" data-line-start="2" data-line-end="5">Submission deadline: 11:59pm, Monday 2 May 2022.<br>
 Value: 20% of CITS2003/CITS4407.<br>

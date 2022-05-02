@@ -5,7 +5,7 @@
 # Assignment 1 2022 class CITS2003
 # TASK TWO
 
-# default function ------------------------------------------------------------------------------
+# Default function ------------------------------------------------------------------------------
 
 if [[ -d "$1" ]] ;
 #Check if first argument is a folder
@@ -84,7 +84,6 @@ then
     done)
     #for loop to iterate through the file to find rank
     #grep highest rank of words from each line and ehco word and file it was in
-    
     
     
     findHighestRank=$( echo "$findRankLoop" | sort -nr | tail -n1 | cut -d: -f1)
